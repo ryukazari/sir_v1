@@ -9,7 +9,7 @@ export async function listarTransferenciasInternas(req, res) {
     } catch (error) {
         console.log(error);
         res.status(500).json({
-            "message": "Error en el servidor 505",
+            message: "Error en el servidor 505",
             data: {}
         });
 

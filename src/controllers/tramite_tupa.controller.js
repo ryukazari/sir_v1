@@ -57,3 +57,36 @@ export async function crearTramiteTupa(req, res){
         });
     }
 }
+
+export async function editarTramiteTupa(req, res){
+    const { id } = req.params;
+    const { nombre_tramite, desc_tramite } = req.body;
+    try {
+        const tramite = await tramite_tupa.findAll({
+            attributes: ['id_tramite','nombre_tramite', 'desc_tramite'],
+            where:{
+                id_tramite: id
+            }
+        });
+        if(tramite.length >0) {
+            tramite.forEach(async tramite_tupa =>{
+                await tramite_tupa.update({
+                    nombre_tramite, 
+                    desc_tramite
+                });
+            });
+        }
+        
+        return res.json({
+            message: 'tramite TUPA actualizada satisfactoriamente',
+            data: tramite
+        });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            "message": "Error en el servidor, no se pudo actualizar el tramite TUPA",
+            data: {}
+        });
+    }
+}

@@ -96,3 +96,39 @@ export async function listarSedesHijos(req, res){
         });
     }
 }
+
+export async function editarSede(req, res){
+    const { id } = req.params;
+    const { codigo_sede, nombre_sede, desc_sede, id_padre_sede, codigo_inicial, presupuesto_sede, ejecutado_sede } = req.body;
+
+    try {
+        const s = await sede.findAll({
+            attributes:['id_sede', 'codigo_sede', 'nombre_sede', 'desc_sede', 'id_padre_sede', 'codigo_inicial', 'presupuesto_sede', 'ejecutado_sede'],
+            where: {
+                id_sede: id
+            }            
+        });
+        if(s.length>0){
+            s.forEach(async sede => {
+                await sede.update({
+                    codigo_sede, 
+                    nombre_sede, 
+                    desc_sede, 
+                    id_padre_sede, 
+                    codigo_inicial, 
+                    presupuesto_sede, 
+                    ejecutado_sede
+                });
+            });
+        }
+
+        return res.json({
+            message: 'Sede actualizada satisfactoriamente',
+            data: s
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "no se pudo editar la SEDE. ERROR 5**"
+        });
+    }    
+}

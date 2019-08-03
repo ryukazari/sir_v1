@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { listarTramitesTupa, listarTramiteTupaById, crearTramiteTupa } from '../controllers/tramite_tupa.controller';
+import { listarTramitesTupa, listarTramiteTupaById, crearTramiteTupa, editarTramiteTupa } from '../controllers/tramite_tupa.controller';
 
 const router = Router();
 
@@ -10,5 +10,7 @@ router.get('/', listarTramitesTupa);
 router.get('/:id_tramite', listarTramiteTupaById);
 /* crea un trámite TUPA */
 router.post('/', crearTramiteTupa);
+/* editar un trámite TUPA */
+router.put('/:id', editarTramiteTupa);
 
 export default router;

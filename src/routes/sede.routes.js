@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { listarSedes, crearSede, listarSedesPadres, listarSedesHijos} from '../controllers/sede.controller'
+import { listarSedes, crearSede, listarSedesPadres, listarSedesHijos, editarSede} from '../controllers/sede.controller'
 
 const router = Router();
 
@@ -12,5 +12,7 @@ router.get('/padres', listarSedesPadres);
 router.get('/hijos/:id_padre_sede', listarSedesHijos);
 /* Crear Sede */
 router.post('/',crearSede);
+/* Editar Sede */
+router.put('/:id',editarSede);
 
 export default router;

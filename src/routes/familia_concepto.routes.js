@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { listarFamiliasConcepto, crearFamiliaConcepto, listarFamiliaConceptoById } from '../controllers/familia_concepto.controller';
+import { listarFamiliasConcepto, crearFamiliaConcepto, listarFamiliaConceptoById, editarFamiliaConcepto } from '../controllers/familia_concepto.controller';
 
 const router = Router();
 
@@ -10,5 +10,7 @@ router.get('/',listarFamiliasConcepto);
 router.get('/:id_familia_concepto',listarFamiliaConceptoById)
 /* Crear familia de conceptos de pago */
 router.post('/',crearFamiliaConcepto);
+/* Crear familia de conceptos de pago */
+router.put('/:id',editarFamiliaConcepto);
 
 export default router;

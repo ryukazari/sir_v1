@@ -22,7 +22,7 @@ import rol from './routes/rol.routes';
 import penalidad from './routes/penalidad.routes';
 import usuario from './routes/usuario.routes';
 import pago from './routes/pago.routes';
-
+import detalle_pago from './routes/detalle_pago.routes';
 /* Middleware */ 
 app.use(morgan('dev'));
 app.use(json());
@@ -46,6 +46,7 @@ app.use('/api/rol', rol);
 app.use('/api/penalidad', penalidad);
 app.use('/api/usuario', usuario);
 app.use('/api/pago', pago);
+app.use('/api/detalle-pago', detalle_pago);
 
 
 export default app;

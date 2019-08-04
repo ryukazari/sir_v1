@@ -1,8 +1,11 @@
+const regeneratorRuntime = require('regenerator-runtime/runtime');
 import app from './app';
 
-async function main(){
-    await app.listen(3000);
-    console.log("Server on port 3000")
-}
+const port = process.env.PORT || 3000;
 
+async function main(){
+    await app.listen(port,()=>{
+        console.log("Server on: "+port);
+    });
+}
 main();

@@ -19,6 +19,7 @@ import detalle_recibo_ingreso from './routes/detalle_recibo_ingreso.routes';
 import persona from './routes/persona.routes';
 import sugerencia from './routes/sugerencia.routes';
 import rol from './routes/rol.routes';
+import penalidad from './routes/penalidad.routes';
 
 /* Middleware */ 
 app.use(morgan('dev'));
@@ -40,6 +41,7 @@ app.use('/api/detalle-recibo-ingreso', detalle_recibo_ingreso);
 app.use('/api/persona', persona);
 app.use('/api/sugerencia', sugerencia);
 app.use('/api/rol', rol);
+app.use('/api/penalidad', penalidad);
 
 
 export default app;

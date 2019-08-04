@@ -13,7 +13,7 @@ import clasificador from './routes/clasificador.routes';
 import concepto_pago from './routes/concepto_pago.routes';
 import descripcion_concepto from './routes/descripcion_concepto.routes';
 import devolucion from './routes/devolucion.routes';
-
+import tipo_ingreso from './routes/tipo_ingreso.routes';
 
 /* Middleware */ 
 app.use(morgan('dev'));
@@ -29,5 +29,6 @@ app.use('/api/clasificador',clasificador);
 app.use('/api/concepto-pago',concepto_pago);
 app.use('/api/descripcion-concepto',descripcion_concepto);
 app.use('/api/devolucion',devolucion);
+app.use('/api/tipo-ingreso', tipo_ingreso)
 
 export default app;

@@ -15,6 +15,7 @@ import descripcion_concepto from './routes/descripcion_concepto.routes';
 import devolucion from './routes/devolucion.routes';
 import tipo_ingreso from './routes/tipo_ingreso.routes';
 import recibo_ingreso from './routes/recibo_ingreso.routes';
+import detalle_recibo_ingreso from './routes/detalle_recibo_ingreso.routes';
 
 /* Middleware */ 
 app.use(morgan('dev'));
@@ -32,6 +33,7 @@ app.use('/api/descripcion-concepto',descripcion_concepto);
 app.use('/api/devolucion',devolucion);
 app.use('/api/tipo-ingreso', tipo_ingreso);
 app.use('/api/recibo-ingreso', recibo_ingreso);
+app.use('/api/detalle-recibo-ingreso', detalle_recibo_ingreso);
 
 
 export default app;

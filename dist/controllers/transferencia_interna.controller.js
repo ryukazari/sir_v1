@@ -3,11 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listarTransferenciasInternas = listarTransferenciasInternas;
-exports.getTransferenciaInterna = getTransferenciaInterna;
-exports.createTransferenciaInterna = createTransferenciaInterna;
-exports.deleteTransferenciaInterna = deleteTransferenciaInterna;
-exports.updateTransferenciaInterna = updateTransferenciaInterna;
+exports.listarTransferenciaInterna = listarTransferenciaInterna;
+exports.listarTransferenciaInternaById = listarTransferenciaInternaById;
+exports.crearTransferenciaInterna = crearTransferenciaInterna;
+exports.eliminarTransferenciaInterna = eliminarTransferenciaInterna;
+exports.editarTransferenciaInterna = editarTransferenciaInterna;
 
 var _transferencia_interna = _interopRequireDefault(require("../models/transferencia_interna"));
 
@@ -17,12 +17,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function listarTransferenciasInternas(_x, _x2) {
-  return _listarTransferenciasInternas.apply(this, arguments);
+function listarTransferenciaInterna(_x, _x2) {
+  return _listarTransferenciaInterna.apply(this, arguments);
 }
 
-function _listarTransferenciasInternas() {
-  _listarTransferenciasInternas = _asyncToGenerator(
+function _listarTransferenciaInterna() {
+  _listarTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee(req, res) {
     var transferencias;
@@ -58,15 +58,15 @@ function _listarTransferenciasInternas() {
       }
     }, _callee, null, [[0, 7]]);
   }));
-  return _listarTransferenciasInternas.apply(this, arguments);
+  return _listarTransferenciaInterna.apply(this, arguments);
 }
 
-function getTransferenciaInterna(_x3, _x4) {
-  return _getTransferenciaInterna.apply(this, arguments);
+function listarTransferenciaInternaById(_x3, _x4) {
+  return _listarTransferenciaInternaById.apply(this, arguments);
 }
 
-function _getTransferenciaInterna() {
-  _getTransferenciaInterna = _asyncToGenerator(
+function _listarTransferenciaInternaById() {
+  _listarTransferenciaInternaById = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee2(req, res) {
     var id, transferencia;
@@ -107,15 +107,15 @@ function _getTransferenciaInterna() {
       }
     }, _callee2, null, [[1, 8]]);
   }));
-  return _getTransferenciaInterna.apply(this, arguments);
+  return _listarTransferenciaInternaById.apply(this, arguments);
 }
 
-function createTransferenciaInterna(_x5, _x6) {
-  return _createTransferenciaInterna.apply(this, arguments);
+function crearTransferenciaInterna(_x5, _x6) {
+  return _crearTransferenciaInterna.apply(this, arguments);
 }
 
-function _createTransferenciaInterna() {
-  _createTransferenciaInterna = _asyncToGenerator(
+function _crearTransferenciaInterna() {
+  _crearTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee3(req, res) {
     var _req$body, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, id_detalle_pago, newTransferenciaInterna;
@@ -172,15 +172,15 @@ function _createTransferenciaInterna() {
       }
     }, _callee3, null, [[1, 9]]);
   }));
-  return _createTransferenciaInterna.apply(this, arguments);
+  return _crearTransferenciaInterna.apply(this, arguments);
 }
 
-function deleteTransferenciaInterna(_x7, _x8) {
-  return _deleteTransferenciaInterna.apply(this, arguments);
+function eliminarTransferenciaInterna(_x7, _x8) {
+  return _eliminarTransferenciaInterna.apply(this, arguments);
 }
 
-function _deleteTransferenciaInterna() {
-  _deleteTransferenciaInterna = _asyncToGenerator(
+function _eliminarTransferenciaInterna() {
+  _eliminarTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee4(req, res) {
     var id, deleteCount;
@@ -222,15 +222,15 @@ function _deleteTransferenciaInterna() {
       }
     }, _callee4, null, [[1, 8]]);
   }));
-  return _deleteTransferenciaInterna.apply(this, arguments);
+  return _eliminarTransferenciaInterna.apply(this, arguments);
 }
 
-function updateTransferenciaInterna(_x9, _x10) {
-  return _updateTransferenciaInterna.apply(this, arguments);
+function editarTransferenciaInterna(_x9, _x10) {
+  return _editarTransferenciaInterna.apply(this, arguments);
 }
 
-function _updateTransferenciaInterna() {
-  _updateTransferenciaInterna = _asyncToGenerator(
+function _editarTransferenciaInterna() {
+  _editarTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee6(req, res) {
     var id, _req$body2, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, id_detalle_pago, transferencias;
@@ -312,5 +312,5 @@ function _updateTransferenciaInterna() {
       }
     }, _callee6, null, [[2, 10]]);
   }));
-  return _updateTransferenciaInterna.apply(this, arguments);
+  return _editarTransferenciaInterna.apply(this, arguments);
 }

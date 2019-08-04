@@ -1,16 +1,16 @@
 import { Router } from 'express';
 
-import { createTransferenciaInterna, listarTransferenciasInternas, getTransferenciaInterna
-        ,deleteTransferenciaInterna, updateTransferenciaInterna} from '../controllers/transferencia_interna.controller';
+import { crearTransferenciaInterna, listarTransferenciaInterna, listarTransferenciaInternaById
+        ,eliminarTransferenciaInterna, editarTransferenciaInterna} from '../controllers/transferencia_interna.controller';
 
 const router = Router();
 
 //api/transferencia-interna
-router.post('/', createTransferenciaInterna);
-router.get('/', listarTransferenciasInternas);
+router.post('/', crearTransferenciaInterna);
+router.get('/', listarTransferenciaInterna);
 //api/transferencia-interna/id
-router.get('/:id', getTransferenciaInterna);
-router.delete('/:id', deleteTransferenciaInterna);
-router.put('/:id',updateTransferenciaInterna);
+router.get('/:id', listarTransferenciaInternaById);
+router.delete('/:id', eliminarTransferenciaInterna);
+router.put('/:id',editarTransferenciaInterna);
 
 export default router;

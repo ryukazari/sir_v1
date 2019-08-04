@@ -1,5 +1,6 @@
 import express, { json } from 'express';
 import morgan from 'morgan'
+var path = require('path');
 
 const app = express();
 
@@ -24,9 +25,13 @@ import penalidad from './routes/penalidad.routes';
 import usuario from './routes/usuario.routes';
 import pago from './routes/pago.routes';
 import detalle_pago from './routes/detalle_pago.routes';
+import index from './routes/index.routes';
 /* Middleware */ 
 app.use(morgan('dev'));
 app.use(json());
+/* view engine */
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 /* Routes */
 app.use('/api/transferencia-interna',transferenciaInterna);
@@ -48,6 +53,7 @@ app.use('/api/penalidad', penalidad);
 app.use('/api/usuario', usuario);
 app.use('/api/pago', pago);
 app.use('/api/detalle-pago', detalle_pago);
+app.use('/', index);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -56,5 +62,7 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+
+
 
 export default app;

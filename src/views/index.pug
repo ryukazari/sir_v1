@@ -1,0 +1,25 @@
+doctype html
+html(lang="es")
+  head
+    title= SIR_v1
+    script(type='text/javascript').
+      if (foo) bar(1 + 5)
+  body
+    h1 API - Sistema de Ingresos a la cuenta Recaudadora UNMSM
+    #container.col
+      if youAreUsingPug
+        ul
+            each val, index in ['/api/clasificador', '/api/concepto-pago', '/api/descripcion-concepto','/api/detalle-pago','/api/clasificadordetalle-recibo-ingreso','/api/devolucion','/api/familia-concepto','/api/familia-concepto','/api/nivel-clasificador','/api/pago','/api/penalidad','/api/persona','/api/recibo-ingreso','/api/rol','/api/sede','/api/sugerencia','/api/tipo-ingreso','/api/tramite-tupa','/api/transferencia-interna','/api/usuario']
+                li= val
+      else
+        h3 Rutas 
+        ul
+            each val, index in ['/api/clasificador', '/api/concepto-pago', '/api/descripcion-concepto','/api/detalle-pago','/api/clasificadordetalle-recibo-ingreso','/api/devolucion','/api/familia-concepto','/api/familia-concepto','/api/nivel-clasificador','/api/pago','/api/penalidad','/api/persona','/api/recibo-ingreso','/api/rol','/api/sede','/api/sugerencia','/api/tipo-ingreso','/api/tramite-tupa','/api/transferencia-interna','/api/usuario']
+                li= val
+        
+        h3 Opciones para cada ruta: 
+        ul
+            each val, index in ['listar[nombre]', 'listar[nombre]ById', 'crear[nombre]','editar[nombre]']
+                li= val
+        
+      p.

@@ -3,8 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listarDevoluciones = listarDevoluciones;
-exports.listarDevolucionesById = listarDevolucionesById;
+exports.listarDevolucion = listarDevolucion;
+exports.listarDevolucionById = listarDevolucionById;
 exports.crearDevolucion = crearDevolucion;
 exports.editarDevolucion = editarDevolucion;
 
@@ -16,12 +16,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-function listarDevoluciones(_x, _x2) {
-  return _listarDevoluciones.apply(this, arguments);
+function listarDevolucion(_x, _x2) {
+  return _listarDevolucion.apply(this, arguments);
 }
 
-function _listarDevoluciones() {
-  _listarDevoluciones = _asyncToGenerator(
+function _listarDevolucion() {
+  _listarDevolucion = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee(req, res) {
     var devol;
@@ -71,15 +71,15 @@ function _listarDevoluciones() {
       }
     }, _callee, null, [[0, 11]]);
   }));
-  return _listarDevoluciones.apply(this, arguments);
+  return _listarDevolucion.apply(this, arguments);
 }
 
-function listarDevolucionesById(_x3, _x4) {
-  return _listarDevolucionesById.apply(this, arguments);
+function listarDevolucionById(_x3, _x4) {
+  return _listarDevolucionById.apply(this, arguments);
 }
 
-function _listarDevolucionesById() {
-  _listarDevolucionesById = _asyncToGenerator(
+function _listarDevolucionById() {
+  _listarDevolucionById = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee2(req, res) {
     var id_devolucion, devol;
@@ -125,7 +125,7 @@ function _listarDevolucionesById() {
       }
     }, _callee2, null, [[1, 10]]);
   }));
-  return _listarDevolucionesById.apply(this, arguments);
+  return _listarDevolucionById.apply(this, arguments);
 }
 
 function crearDevolucion(_x5, _x6) {

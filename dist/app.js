@@ -47,9 +47,13 @@ var _pago = _interopRequireDefault(require("./routes/pago.routes"));
 
 var _detalle_pago = _interopRequireDefault(require("./routes/detalle_pago.routes"));
 
+var _index = _interopRequireDefault(require("./routes/index.routes"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; return newObj; } }
+
+var path = require('path');
 
 var app = (0, _express["default"])();
 /* Import Routes*/
@@ -57,6 +61,10 @@ var app = (0, _express["default"])();
 /* Middleware */
 app.use((0, _morgan["default"])('dev'));
 app.use((0, _express.json)());
+/* view engine */
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 /* Routes */
 
 app.use('/api/transferencia-interna', _transferencia_interna["default"]);
@@ -78,6 +86,7 @@ app.use('/api/penalidad', _penalidad["default"]);
 app.use('/api/usuario', _usuario["default"]);
 app.use('/api/pago', _pago["default"]);
 app.use('/api/detalle-pago', _detalle_pago["default"]);
+app.use('/', _index["default"]);
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');

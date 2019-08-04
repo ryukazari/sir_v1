@@ -1,11 +1,11 @@
 import { Router } from 'express';
 
-import { crearDevolucion, editarDevolucion, listarDevoluciones, listarDevolucionesById } from '../controllers/devolucion.controller';
+import { crearDevolucion, editarDevolucion, listarDevolucion, listarDevolucionById } from '../controllers/devolucion.controller';
 
 const router = Router();
 
-router.get('/', listarDevoluciones);
-router.get('/:id_devolucion', listarDevolucionesById);
+router.get('/', listarDevolucion);
+router.get('/:id_devolucion', listarDevolucionById);
 router.post('/', crearDevolucion);
 router.put('/:id_devolucion', editarDevolucion);
 

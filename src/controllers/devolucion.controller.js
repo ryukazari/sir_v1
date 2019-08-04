@@ -1,6 +1,6 @@
 import devolucion from '../models/devolucion.model';
 
-export async function listarDevoluciones(req, res){
+export async function listarDevolucion(req, res){
     try {
         let devol = await devolucion.findAll();
         if(devol<=0){
@@ -24,7 +24,7 @@ export async function listarDevoluciones(req, res){
 
 }
 
-export async function listarDevolucionesById(req, res){
+export async function listarDevolucionById(req, res){
     const { id_devolucion } = req.params;
     try {
         let devol = await devolucion.findByPk(id_devolucion);

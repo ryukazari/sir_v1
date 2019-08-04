@@ -1,6 +1,6 @@
 import transferencia_interna from '../models/transferencia_interna';
 
-export async function listarTransferenciasInternas(req, res) {
+export async function listarTransferenciaInterna(req, res) {
     try {
         const transferencias = await transferencia_interna.findAll();
         res.json({
@@ -16,7 +16,7 @@ export async function listarTransferenciasInternas(req, res) {
     }
 }
 
-export async function getTransferenciaInterna(req, res){
+export async function listarTransferenciaInternaById(req, res){
     const { id } = req.params;
     try {
         const transferencia = await transferencia_interna.findOne({
@@ -38,7 +38,7 @@ export async function getTransferenciaInterna(req, res){
     }
 }
 
-export async function createTransferenciaInterna(req, res) {
+export async function crearTransferenciaInterna(req, res) {
     const { anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna,
         fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna,
         monto_transferencia_interna, id_detalle_pago } = req.body;
@@ -73,7 +73,7 @@ export async function createTransferenciaInterna(req, res) {
 
 }
 
-export async function deleteTransferenciaInterna(req, res){
+export async function eliminarTransferenciaInterna(req, res){
     const { id } = req.params;
     try {
         const deleteCount = await transferencia_interna.destroy({
@@ -95,7 +95,7 @@ export async function deleteTransferenciaInterna(req, res){
     }
 }
 
-export async function updateTransferenciaInterna(req, res){
+export async function editarTransferenciaInterna(req, res){
     const { id } = req.params;
     const { anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna,
         fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna,

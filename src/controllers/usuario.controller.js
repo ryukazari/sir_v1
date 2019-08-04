@@ -55,7 +55,6 @@ export async function crearUsuario(req, res){
                     message: "Usuario creado exitosamente",
                     data: user
                 })
-
             }
         } catch (error) {
             console.log(error);

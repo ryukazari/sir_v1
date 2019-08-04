@@ -20,6 +20,7 @@ import persona from './routes/persona.routes';
 import sugerencia from './routes/sugerencia.routes';
 import rol from './routes/rol.routes';
 import penalidad from './routes/penalidad.routes';
+import usuario from './routes/usuario.routes';
 
 /* Middleware */ 
 app.use(morgan('dev'));
@@ -42,6 +43,7 @@ app.use('/api/persona', persona);
 app.use('/api/sugerencia', sugerencia);
 app.use('/api/rol', rol);
 app.use('/api/penalidad', penalidad);
+app.use('/api/usuario', usuario);
 
 
 export default app;

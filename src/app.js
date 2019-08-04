@@ -10,6 +10,7 @@ import familia_concepto from './routes/familia_concepto.routes';
 import tramite_tupa from './routes/tramite_tupa.routes';
 import nivel_clasificador from './routes/nivel_clasificador.routes';
 import clasificador from './routes/clasificador.routes';
+import concepto_pago from './routes/concepto_pago.routes';
 
 
 /* Middleware */ 
@@ -23,5 +24,6 @@ app.use('/api/familia-concepto',familia_concepto);
 app.use('/api/tramite-tupa',tramite_tupa);
 app.use('/api/nivel-clasificador',nivel_clasificador);
 app.use('/api/clasificador',clasificador);
+app.use('/api/concepto-pago',concepto_pago);
 
 export default app;

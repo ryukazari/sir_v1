@@ -17,6 +17,7 @@ import tipo_ingreso from './routes/tipo_ingreso.routes';
 import recibo_ingreso from './routes/recibo_ingreso.routes';
 import detalle_recibo_ingreso from './routes/detalle_recibo_ingreso.routes';
 import persona from './routes/persona.routes';
+import sugerencia from './routes/sugerencia.routes';
 
 /* Middleware */ 
 app.use(morgan('dev'));
@@ -36,6 +37,7 @@ app.use('/api/tipo-ingreso', tipo_ingreso);
 app.use('/api/recibo-ingreso', recibo_ingreso);
 app.use('/api/detalle-recibo-ingreso', detalle_recibo_ingreso);
 app.use('/api/persona', persona);
+app.use('/api/sugerencia', sugerencia);
 
 
 export default app;

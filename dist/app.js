@@ -58,7 +58,10 @@ var path = require('path');
 var app = (0, _express["default"])();
 /* Import Routes*/
 
+var port = process.env.PORT || 3000;
+app.set('port', port);
 /* Middleware */
+
 app.use((0, _morgan["default"])('dev'));
 app.use((0, _express.json)());
 /* view engine */

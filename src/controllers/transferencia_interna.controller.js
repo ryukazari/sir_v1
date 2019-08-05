@@ -3,6 +3,12 @@ import transferencia_interna from '../models/transferencia_interna';
 export async function listarTransferenciaInterna(req, res) {
     try {
         const transferencias = await transferencia_interna.findAll();
+        if (transferencias.length <= 0) {
+            return res.status(400).json({
+                message: "No existen transferencias Internas",
+                data: {}
+            })
+        }
         res.json({
             data: transferencias
         });
@@ -60,12 +66,18 @@ export async function crearTransferenciaInterna(req, res) {
             desc_transferencia_interna,
             monto_transferencia_interna
         });
-
-        if (newTransferenciaInterna) {
+        console.log(newTransferenciaInterna.dataValues.id_transferencia_interna);
+        if (newTransferenciaInterna.dataValues.id_transferencia_interna === null) {
             return res.json({
-                "message": "se creó la transferencia interna",
+                message: "Error al registrar la transferencia, no hay presupuesto suficiente",
+                data: {}
+            });
+        } else {
+            return res.status(200).json({
+                message: "se creó la transferencia interna",
                 data: newTransferenciaInterna
             });
+
         }
 
 
@@ -153,16 +165,16 @@ export async function editarTransferenciaInterna(req, res) {
 }
 
 export async function listarTransferenciaSalienteById(req, res) {
-    const { id_sede_origen } = req.params;
+    const { id } = req.params;
     try {
         let transferencias = await transferencia_interna.findAll({
             where: {
-                id_sede_origen
+                id_sede_origen: id
             }
         });
         if (transferencias.length <= 0) {
             return res.status(400).json({
-                message: "No existen transferencias salientes para la sede con id: " + id_sede_origen,
+                message: "No existen transferencias salientes para la sede con id: " + id,
                 data: {}
             })
         } else {
@@ -183,16 +195,18 @@ export async function listarTransferenciaSalienteById(req, res) {
 }
 
 export async function listarTransferenciaEntranteById(req, res) {
-    const { id_sede_destino } = req.params;
+    const { id } = req.params;
+    console.log(id);
+
     try {
         let transferencias = await transferencia_interna.findAll({
             where: {
-                id_sede_destino
+                id_sede_destino: id
             }
         });
         if (transferencias.length <= 0) {
             return res.status(400).json({
-                message: "No existen transferencias entrantes para la sede con id: " + id_sede_destino,
+                message: "No existen transferencias entrantes para la sede con id: " + id,
                 data: {}
             })
         } else {

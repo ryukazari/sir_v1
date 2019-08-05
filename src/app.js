@@ -26,7 +26,13 @@ import usuario from './routes/usuario.routes';
 import pago from './routes/pago.routes';
 import detalle_pago from './routes/detalle_pago.routes';
 import index from './routes/index.routes';
-/* Middleware */ 
+
+const port = process.env.PORT || 3000;
+
+app.set('port', port);
+
+
+/* Middleware */
 app.use(morgan('dev'));
 app.use(json());
 /* view engine */
@@ -34,15 +40,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 /* Routes */
-app.use('/api/transferencia-interna',transferenciaInterna);
-app.use('/api/sede',sede);
-app.use('/api/familia-concepto',familia_concepto);
-app.use('/api/tramite-tupa',tramite_tupa);
-app.use('/api/nivel-clasificador',nivel_clasificador);
-app.use('/api/clasificador',clasificador);
-app.use('/api/concepto-pago',concepto_pago);
-app.use('/api/descripcion-concepto',descripcion_concepto);
-app.use('/api/devolucion',devolucion);
+app.use('/api/transferencia-interna', transferenciaInterna);
+app.use('/api/sede', sede);
+app.use('/api/familia-concepto', familia_concepto);
+app.use('/api/tramite-tupa', tramite_tupa);
+app.use('/api/nivel-clasificador', nivel_clasificador);
+app.use('/api/clasificador', clasificador);
+app.use('/api/concepto-pago', concepto_pago);
+app.use('/api/descripcion-concepto', descripcion_concepto);
+app.use('/api/devolucion', devolucion);
 app.use('/api/tipo-ingreso', tipo_ingreso);
 app.use('/api/recibo-ingreso', recibo_ingreso);
 app.use('/api/detalle-recibo-ingreso', detalle_recibo_ingreso);

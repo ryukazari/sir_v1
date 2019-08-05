@@ -38,14 +38,26 @@ function _listarTransferenciaInterna() {
 
           case 3:
             transferencias = _context.sent;
+
+            if (!(transferencias.length <= 0)) {
+              _context.next = 6;
+              break;
+            }
+
+            return _context.abrupt("return", res.status(400).json({
+              message: "No existen transferencias Internas",
+              data: {}
+            }));
+
+          case 6:
             res.json({
               data: transferencias
             });
-            _context.next = 11;
+            _context.next = 13;
             break;
 
-          case 7:
-            _context.prev = 7;
+          case 9:
+            _context.prev = 9;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
             res.status(500).json({
@@ -53,12 +65,12 @@ function _listarTransferenciaInterna() {
               data: {}
             });
 
-          case 11:
+          case 13:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 7]]);
+    }, _callee, null, [[0, 9]]);
   }));
   return _listarTransferenciaInterna.apply(this, arguments);
 }
@@ -142,23 +154,30 @@ function _crearTransferenciaInterna() {
 
           case 4:
             newTransferenciaInterna = _context3.sent;
+            console.log(newTransferenciaInterna.dataValues.id_transferencia_interna);
 
-            if (!newTransferenciaInterna) {
-              _context3.next = 7;
+            if (!(newTransferenciaInterna.dataValues.id_transferencia_interna === null)) {
+              _context3.next = 10;
               break;
             }
 
             return _context3.abrupt("return", res.json({
-              "message": "se creó la transferencia interna",
+              message: "Error al registrar la transferencia, no hay presupuesto suficiente",
+              data: {}
+            }));
+
+          case 10:
+            return _context3.abrupt("return", res.status(200).json({
+              message: "se creó la transferencia interna",
               data: newTransferenciaInterna
             }));
 
-          case 7:
-            _context3.next = 13;
+          case 11:
+            _context3.next = 17;
             break;
 
-          case 9:
-            _context3.prev = 9;
+          case 13:
+            _context3.prev = 13;
             _context3.t0 = _context3["catch"](1);
             console.log(_context3.t0);
             res.status(500).json({
@@ -166,12 +185,12 @@ function _crearTransferenciaInterna() {
               data: {}
             });
 
-          case 13:
+          case 17:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[1, 9]]);
+    }, _callee3, null, [[1, 13]]);
   }));
   return _crearTransferenciaInterna.apply(this, arguments);
 }
@@ -323,17 +342,17 @@ function _listarTransferenciaSalienteById() {
   _listarTransferenciaSalienteById = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee7(req, res) {
-    var id_sede_origen, transferencias;
+    var id, transferencias;
     return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
         switch (_context7.prev = _context7.next) {
           case 0:
-            id_sede_origen = req.params.id_sede_origen;
+            id = req.params.id;
             _context7.prev = 1;
             _context7.next = 4;
             return _transferencia_interna["default"].findAll({
               where: {
-                id_sede_origen: id_sede_origen
+                id_sede_origen: id
               }
             });
 
@@ -346,7 +365,7 @@ function _listarTransferenciaSalienteById() {
             }
 
             return _context7.abrupt("return", res.status(400).json({
-              message: "No existen transferencias salientes para la sede con id: " + id_sede_origen,
+              message: "No existen transferencias salientes para la sede con id: " + id,
               data: {}
             }));
 
@@ -386,57 +405,58 @@ function _listarTransferenciaEntranteById() {
   _listarTransferenciaEntranteById = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee8(req, res) {
-    var id_sede_destino, transferencias;
+    var id, transferencias;
     return regeneratorRuntime.wrap(function _callee8$(_context8) {
       while (1) {
         switch (_context8.prev = _context8.next) {
           case 0:
-            id_sede_destino = req.params.id_sede_destino;
-            _context8.prev = 1;
-            _context8.next = 4;
+            id = req.params.id;
+            console.log(id);
+            _context8.prev = 2;
+            _context8.next = 5;
             return _transferencia_interna["default"].findAll({
               where: {
-                id_sede_destino: id_sede_destino
+                id_sede_destino: id
               }
             });
 
-          case 4:
+          case 5:
             transferencias = _context8.sent;
 
             if (!(transferencias.length <= 0)) {
-              _context8.next = 9;
+              _context8.next = 10;
               break;
             }
 
             return _context8.abrupt("return", res.status(400).json({
-              message: "No existen transferencias entrantes para la sede con id: " + id_sede_destino,
+              message: "No existen transferencias entrantes para la sede con id: " + id,
               data: {}
             }));
 
-          case 9:
+          case 10:
             return _context8.abrupt("return", res.status(200).json({
               data: transferencias
             }));
 
-          case 10:
-            _context8.next = 16;
+          case 11:
+            _context8.next = 17;
             break;
 
-          case 12:
-            _context8.prev = 12;
-            _context8.t0 = _context8["catch"](1);
+          case 13:
+            _context8.prev = 13;
+            _context8.t0 = _context8["catch"](2);
             console.log(_context8.t0);
             res.status(500).json({
               message: "error al obtener los registros de las trasnferencias entrantes",
               data: {}
             });
 
-          case 16:
+          case 17:
           case "end":
             return _context8.stop();
         }
       }
-    }, _callee8, null, [[1, 12]]);
+    }, _callee8, null, [[2, 13]]);
   }));
   return _listarTransferenciaEntranteById.apply(this, arguments);
 }

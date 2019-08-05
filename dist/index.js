@@ -10,8 +10,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var regeneratorRuntime = require('regenerator-runtime/runtime');
 
-var port = process.env.PORT || 3000;
-
 function main() {
   return _main.apply(this, arguments);
 }
@@ -25,8 +23,8 @@ function _main() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return _app["default"].listen(port, function () {
-              console.log("Server on: " + port);
+            return _app["default"].listen(_app["default"].get('port'), function () {
+              console.log("Server on: " + _app["default"].get('port'));
             });
 
           case 2:

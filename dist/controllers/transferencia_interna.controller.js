@@ -8,6 +8,8 @@ exports.listarTransferenciaInternaById = listarTransferenciaInternaById;
 exports.crearTransferenciaInterna = crearTransferenciaInterna;
 exports.eliminarTransferenciaInterna = eliminarTransferenciaInterna;
 exports.editarTransferenciaInterna = editarTransferenciaInterna;
+exports.listarTransferenciaSalienteById = listarTransferenciaSalienteById;
+exports.listarTransferenciaEntranteById = listarTransferenciaEntranteById;
 
 var _transferencia_interna = _interopRequireDefault(require("../models/transferencia_interna"));
 
@@ -118,13 +120,13 @@ function _crearTransferenciaInterna() {
   _crearTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee3(req, res) {
-    var _req$body, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, id_detalle_pago, newTransferenciaInterna;
+    var _req$body, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, newTransferenciaInterna;
 
     return regeneratorRuntime.wrap(function _callee3$(_context3) {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            _req$body = req.body, anio_transferencia_interna = _req$body.anio_transferencia_interna, id_sede_origen = _req$body.id_sede_origen, id_sede_destino = _req$body.id_sede_destino, mes_transferencia_interna = _req$body.mes_transferencia_interna, fecha_transferencia_interna = _req$body.fecha_transferencia_interna, expediente_transferencia_interna = _req$body.expediente_transferencia_interna, desc_transferencia_interna = _req$body.desc_transferencia_interna, monto_transferencia_interna = _req$body.monto_transferencia_interna, id_detalle_pago = _req$body.id_detalle_pago;
+            _req$body = req.body, anio_transferencia_interna = _req$body.anio_transferencia_interna, id_sede_origen = _req$body.id_sede_origen, id_sede_destino = _req$body.id_sede_destino, mes_transferencia_interna = _req$body.mes_transferencia_interna, fecha_transferencia_interna = _req$body.fecha_transferencia_interna, expediente_transferencia_interna = _req$body.expediente_transferencia_interna, desc_transferencia_interna = _req$body.desc_transferencia_interna, monto_transferencia_interna = _req$body.monto_transferencia_interna;
             _context3.prev = 1;
             _context3.next = 4;
             return _transferencia_interna["default"].create({
@@ -135,8 +137,7 @@ function _crearTransferenciaInterna() {
               fecha_transferencia_interna: fecha_transferencia_interna,
               expediente_transferencia_interna: expediente_transferencia_interna,
               desc_transferencia_interna: desc_transferencia_interna,
-              monto_transferencia_interna: monto_transferencia_interna,
-              id_detalle_pago: id_detalle_pago
+              monto_transferencia_interna: monto_transferencia_interna
             });
 
           case 4:
@@ -200,7 +201,7 @@ function _eliminarTransferenciaInterna() {
           case 4:
             deleteCount = _context4.sent;
             res.json({
-              message: 'Se eliminó la transferencia interna',
+              message: 'Se eliminaron ' + deleteCount + ' fila(s) de la tabla transferencia_interna',
               count: deleteCount
             });
             _context4.next = 12;
@@ -233,18 +234,18 @@ function _editarTransferenciaInterna() {
   _editarTransferenciaInterna = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee6(req, res) {
-    var id, _req$body2, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, id_detalle_pago, transferencias;
+    var id, _req$body2, anio_transferencia_interna, id_sede_origen, id_sede_destino, mes_transferencia_interna, fecha_transferencia_interna, expediente_transferencia_interna, desc_transferencia_interna, monto_transferencia_interna, transferencias;
 
     return regeneratorRuntime.wrap(function _callee6$(_context6) {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
             id = req.params.id;
-            _req$body2 = req.body, anio_transferencia_interna = _req$body2.anio_transferencia_interna, id_sede_origen = _req$body2.id_sede_origen, id_sede_destino = _req$body2.id_sede_destino, mes_transferencia_interna = _req$body2.mes_transferencia_interna, fecha_transferencia_interna = _req$body2.fecha_transferencia_interna, expediente_transferencia_interna = _req$body2.expediente_transferencia_interna, desc_transferencia_interna = _req$body2.desc_transferencia_interna, monto_transferencia_interna = _req$body2.monto_transferencia_interna, id_detalle_pago = _req$body2.id_detalle_pago;
+            _req$body2 = req.body, anio_transferencia_interna = _req$body2.anio_transferencia_interna, id_sede_origen = _req$body2.id_sede_origen, id_sede_destino = _req$body2.id_sede_destino, mes_transferencia_interna = _req$body2.mes_transferencia_interna, fecha_transferencia_interna = _req$body2.fecha_transferencia_interna, expediente_transferencia_interna = _req$body2.expediente_transferencia_interna, desc_transferencia_interna = _req$body2.desc_transferencia_interna, monto_transferencia_interna = _req$body2.monto_transferencia_interna;
             _context6.prev = 2;
             _context6.next = 5;
             return _transferencia_interna["default"].findAll({
-              attributes: ['id_transferencia_interna', 'anio_transferencia_interna', 'id_sede_origen', 'id_sede_destino', 'mes_transferencia_interna', 'fecha_transferencia_interna', 'expediente_transferencia_interna', 'desc_transferencia_interna', 'monto_transferencia_interna', 'id_detalle_pago'],
+              attributes: ['id_transferencia_interna', 'anio_transferencia_interna', 'id_sede_origen', 'id_sede_destino', 'mes_transferencia_interna', 'fecha_transferencia_interna', 'expediente_transferencia_interna', 'desc_transferencia_interna', 'monto_transferencia_interna'],
               where: {
                 id_transferencia_interna: id
               }
@@ -273,8 +274,7 @@ function _editarTransferenciaInterna() {
                             fecha_transferencia_interna: fecha_transferencia_interna,
                             expediente_transferencia_interna: expediente_transferencia_interna,
                             desc_transferencia_interna: desc_transferencia_interna,
-                            monto_transferencia_interna: monto_transferencia_interna,
-                            id_detalle_pago: id_detalle_pago
+                            monto_transferencia_interna: monto_transferencia_interna
                           });
 
                         case 2:
@@ -285,7 +285,7 @@ function _editarTransferenciaInterna() {
                   }, _callee5);
                 }));
 
-                return function (_x11) {
+                return function (_x15) {
                   return _ref.apply(this, arguments);
                 };
               }());
@@ -313,4 +313,130 @@ function _editarTransferenciaInterna() {
     }, _callee6, null, [[2, 10]]);
   }));
   return _editarTransferenciaInterna.apply(this, arguments);
+}
+
+function listarTransferenciaSalienteById(_x11, _x12) {
+  return _listarTransferenciaSalienteById.apply(this, arguments);
+}
+
+function _listarTransferenciaSalienteById() {
+  _listarTransferenciaSalienteById = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee7(req, res) {
+    var id_sede_origen, transferencias;
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            id_sede_origen = req.params.id_sede_origen;
+            _context7.prev = 1;
+            _context7.next = 4;
+            return _transferencia_interna["default"].findAll({
+              where: {
+                id_sede_origen: id_sede_origen
+              }
+            });
+
+          case 4:
+            transferencias = _context7.sent;
+
+            if (!(transferencias.length <= 0)) {
+              _context7.next = 9;
+              break;
+            }
+
+            return _context7.abrupt("return", res.status(400).json({
+              message: "No existen transferencias salientes para la sede con id: " + id_sede_origen,
+              data: {}
+            }));
+
+          case 9:
+            return _context7.abrupt("return", res.status(200).json({
+              data: transferencias
+            }));
+
+          case 10:
+            _context7.next = 16;
+            break;
+
+          case 12:
+            _context7.prev = 12;
+            _context7.t0 = _context7["catch"](1);
+            console.log(_context7.t0);
+            res.status(500).json({
+              message: "error al obtener los registros de las trasnferencias salientes",
+              data: {}
+            });
+
+          case 16:
+          case "end":
+            return _context7.stop();
+        }
+      }
+    }, _callee7, null, [[1, 12]]);
+  }));
+  return _listarTransferenciaSalienteById.apply(this, arguments);
+}
+
+function listarTransferenciaEntranteById(_x13, _x14) {
+  return _listarTransferenciaEntranteById.apply(this, arguments);
+}
+
+function _listarTransferenciaEntranteById() {
+  _listarTransferenciaEntranteById = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee8(req, res) {
+    var id_sede_destino, transferencias;
+    return regeneratorRuntime.wrap(function _callee8$(_context8) {
+      while (1) {
+        switch (_context8.prev = _context8.next) {
+          case 0:
+            id_sede_destino = req.params.id_sede_destino;
+            _context8.prev = 1;
+            _context8.next = 4;
+            return _transferencia_interna["default"].findAll({
+              where: {
+                id_sede_destino: id_sede_destino
+              }
+            });
+
+          case 4:
+            transferencias = _context8.sent;
+
+            if (!(transferencias.length <= 0)) {
+              _context8.next = 9;
+              break;
+            }
+
+            return _context8.abrupt("return", res.status(400).json({
+              message: "No existen transferencias entrantes para la sede con id: " + id_sede_destino,
+              data: {}
+            }));
+
+          case 9:
+            return _context8.abrupt("return", res.status(200).json({
+              data: transferencias
+            }));
+
+          case 10:
+            _context8.next = 16;
+            break;
+
+          case 12:
+            _context8.prev = 12;
+            _context8.t0 = _context8["catch"](1);
+            console.log(_context8.t0);
+            res.status(500).json({
+              message: "error al obtener los registros de las trasnferencias entrantes",
+              data: {}
+            });
+
+          case 16:
+          case "end":
+            return _context8.stop();
+        }
+      }
+    }, _callee8, null, [[1, 12]]);
+  }));
+  return _listarTransferenciaEntranteById.apply(this, arguments);
 }

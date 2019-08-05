@@ -15,6 +15,8 @@ router.post('/', _transferencia_interna.crearTransferenciaInterna);
 router.get('/', _transferencia_interna.listarTransferenciaInterna); //api/transferencia-interna/id
 
 router.get('/:id', _transferencia_interna.listarTransferenciaInternaById);
+router.get('/entrante/:id', _transferencia_interna.listarTransferenciaEntranteById);
+router.get('/saliente/:id', _transferencia_interna.listarTransferenciaSalienteById);
 router["delete"]('/:id', _transferencia_interna.eliminarTransferenciaInterna);
 router.put('/:id', _transferencia_interna.editarTransferenciaInterna);
 var _default = router;

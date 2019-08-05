@@ -14,5 +14,6 @@ router.get('/', _clasificador.listarClasificador);
 router.get('/:id_clasificador', _clasificador.listarClasificadorById);
 router.post('/', _clasificador.crearClasificador);
 router.put('/:id_clasificador', _clasificador.editarClasificador);
+router.get('/nivel/:id_nivel', _clasificador.listarClasificadorByNivel);
 var _default = router;
 exports["default"] = _default;

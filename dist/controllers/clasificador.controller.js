@@ -7,8 +7,11 @@ exports.crearClasificador = crearClasificador;
 exports.listarClasificador = listarClasificador;
 exports.listarClasificadorById = listarClasificadorById;
 exports.editarClasificador = editarClasificador;
+exports.listarClasificadorByNivel = listarClasificadorByNivel;
 
 var _clasificador = _interopRequireDefault(require("../models/clasificador.model"));
+
+var _nivel_clasificador = _interopRequireDefault(require("../models/nivel_clasificador.model"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -221,7 +224,7 @@ function _editarClasificador() {
                   }, _callee4);
                 }));
 
-                return function (_x9) {
+                return function (_x11) {
                   return _ref.apply(this, arguments);
                 };
               }());
@@ -248,4 +251,72 @@ function _editarClasificador() {
     }, _callee5, null, [[2, 10]]);
   }));
   return _editarClasificador.apply(this, arguments);
+}
+
+function listarClasificadorByNivel(_x9, _x10) {
+  return _listarClasificadorByNivel.apply(this, arguments);
+}
+
+function _listarClasificadorByNivel() {
+  _listarClasificadorByNivel = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee6(req, res) {
+    var id_nivel, clasif;
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            console.log("1");
+            id_nivel = req.params.id_nivel;
+            console.log(id_nivel);
+            _context6.prev = 3;
+            console.log("Try");
+            _context6.next = 7;
+            return _clasificador["default"].findAll({
+              where: {
+                id_nivel: id_nivel
+              },
+              include: [_nivel_clasificador["default"]]
+            });
+
+          case 7:
+            clasif = _context6.sent;
+            console.log(clasif);
+
+            if (!(clasif.length > 0)) {
+              _context6.next = 14;
+              break;
+            }
+
+            console.log("IF");
+            return _context6.abrupt("return", res.json({
+              data: clasif
+            }));
+
+          case 14:
+            return _context6.abrupt("return", res.status(400).json({
+              message: "No existe registro con el id_nivel: " + id_nivel
+            }));
+
+          case 15:
+            _context6.next = 21;
+            break;
+
+          case 17:
+            _context6.prev = 17;
+            _context6.t0 = _context6["catch"](3);
+            console.log(_context6.t0);
+            res.status(500).json({
+              "message": "Error al listar los Clasificadores",
+              data: {}
+            });
+
+          case 21:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[3, 17]]);
+  }));
+  return _listarClasificadorByNivel.apply(this, arguments);
 }

@@ -9,14 +9,10 @@ var _sequelize = _interopRequireDefault(require("sequelize"));
 
 var _database = require("../database/database");
 
-var _sequelize$define;
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 //import transferencia_externa 
-var transferencia_interna = _database.sequelize.define('transferencia_interna', (_sequelize$define = {
+var transferencia_interna = _database.sequelize.define('transferencia_interna', {
   id_transferencia_interna: {
     type: _sequelize["default"].INTEGER,
     primaryKey: true,
@@ -42,14 +38,11 @@ var transferencia_interna = _database.sequelize.define('transferencia_interna', 
   },
   expediente_transferencia_interna: {
     type: _sequelize["default"].STRING
+  },
+  monto_transferencia_interna: {
+    type: _sequelize["default"].DECIMAL(15, 2)
   }
-}, _defineProperty(_sequelize$define, "desc_transferencia_interna", {
-  type: _sequelize["default"].STRING
-}), _defineProperty(_sequelize$define, "monto_transferencia_interna", {
-  type: _sequelize["default"].DECIMAL(15, 2)
-}), _defineProperty(_sequelize$define, "id_detalle_pago", {
-  type: _sequelize["default"].INTEGER
-}), _sequelize$define), {
+}, {
   timestamps: false,
   tableName: "transferencia_interna"
 }); //transferencia_interna.hasMany(transferencia_externa, { foreignKey: 'id_transferencia_externa', sourceKey: 'Id' })

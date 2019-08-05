@@ -1,6 +1,6 @@
 import Sequelize from 'sequelize';
 
-/*
+
 export const sequelize = new Sequelize('kddhmgyb', 'kddhmgyb', 'tY7uNo1zFoKmhigHQ4NLB-H_VHWIFPyN', {
     host: 'motty.db.elephantsql.com',
     dialect: 'postgres',
@@ -12,7 +12,7 @@ export const sequelize = new Sequelize('kddhmgyb', 'kddhmgyb', 'tY7uNo1zFoKmhigH
     },
     logging: false
 });
-*/
+/*
 export const sequelize = new Sequelize('pichincha1', 'postgres', 'postgres', {
     host: 'localhost',
     dialect: 'postgres',
@@ -23,4 +23,4 @@ export const sequelize = new Sequelize('pichincha1', 'postgres', 'postgres', {
         idle: 60
     },
     logging: false
-});
+});*/

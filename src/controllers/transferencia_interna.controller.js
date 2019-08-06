@@ -57,7 +57,7 @@ export async function crearTransferenciaInterna(req, res) {
         monto_transferencia_interna
     } = req.body;
     try {
-        let resultadoQ;
+        //let resultadoQ;
         let query = "SELECT verificar_presupuesto_transferencia_interna(:id_sede_origen, :id_sede_destino, :monto_transferencia_interna)";
 
         await sequelize.query(query, {
@@ -75,10 +75,10 @@ export async function crearTransferenciaInterna(req, res) {
                     });
                 } else {
                     let newTransferenciaInterna = await transferencia_interna.create({
-                        anio_transferencia_interna,
+                        //anio_transferencia_interna,
                         id_sede_origen,
                         id_sede_destino,
-                        mes_transferencia_interna,
+                        //mes_transferencia_interna,
                         fecha_transferencia_interna,
                         expediente_transferencia_interna,
                         desc_transferencia_interna,

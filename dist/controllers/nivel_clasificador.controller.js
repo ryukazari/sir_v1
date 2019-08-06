@@ -6,8 +6,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.listarNivelClasificador = listarNivelClasificador;
 exports.crearNivelClasificador = crearNivelClasificador;
 exports.editarNivelClasificador = editarNivelClasificador;
+exports.editar2NivelClasificador = editar2NivelClasificador;
 
 var _nivel_clasificador = _interopRequireDefault(require("../models/nivel_clasificador.model"));
+
+var _database = require("../database/database");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -140,55 +143,155 @@ function _editarNivelClasificador() {
           case 5:
             nivel = _context4.sent;
 
-            if (nivel.length > 0) {
-              nivel.forEach(
-              /*#__PURE__*/
-              function () {
-                var _ref = _asyncToGenerator(
-                /*#__PURE__*/
-                regeneratorRuntime.mark(function _callee3(nivel_clasificador) {
-                  return regeneratorRuntime.wrap(function _callee3$(_context3) {
-                    while (1) {
-                      switch (_context3.prev = _context3.next) {
-                        case 0:
-                          _context3.next = 2;
-                          return nivel_clasificador.update({
-                            nomb_nivel_clasif: nomb_nivel_clasif
-                          });
-
-                        case 2:
-                        case "end":
-                          return _context3.stop();
-                      }
-                    }
-                  }, _callee3);
-                }));
-
-                return function (_x7) {
-                  return _ref.apply(this, arguments);
-                };
-              }());
+            if (!(nivel.length > 0)) {
+              _context4.next = 11;
+              break;
             }
 
+            nivel.forEach(
+            /*#__PURE__*/
+            function () {
+              var _ref = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee3(nivel_clasificador) {
+                return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        _context3.next = 2;
+                        return nivel_clasificador.update({
+                          nomb_nivel_clasif: nomb_nivel_clasif
+                        });
+
+                      case 2:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              }));
+
+              return function (_x9) {
+                return _ref.apply(this, arguments);
+              };
+            }());
             return _context4.abrupt("return", res.status(200).json({
               message: "se actualizó correctamente el nivel del clasificador",
               data: nivel
             }));
 
-          case 10:
-            _context4.prev = 10;
+          case 11:
+            return _context4.abrupt("return", res.status(400).json({
+              message: "No se encontró un nivel clasificador con id: " + id_nivel_clasificador,
+              data: nivel
+            }));
+
+          case 12:
+            _context4.next = 17;
+            break;
+
+          case 14:
+            _context4.prev = 14;
             _context4.t0 = _context4["catch"](2);
             res.status(500).json({
               message: "no se pudo actualizar el nivel del clasificador",
               data: {}
             });
 
-          case 13:
+          case 17:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[2, 10]]);
+    }, _callee4, null, [[2, 14]]);
   }));
   return _editarNivelClasificador.apply(this, arguments);
+}
+
+function editar2NivelClasificador(_x7, _x8) {
+  return _editar2NivelClasificador.apply(this, arguments);
+}
+
+function _editar2NivelClasificador() {
+  _editar2NivelClasificador = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee6(req, res) {
+    var id_nivel_clasificador, nomb_nivel_clasif, query;
+    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            id_nivel_clasificador = req.params.id_nivel_clasificador;
+            nomb_nivel_clasif = req.body.nomb_nivel_clasif;
+            _context6.prev = 2;
+            query = "UPDATE nivel_clasificador SET nomb_nivel_clasif = :nomb_nivel_clasificador  WHERE id_nivel_clasificador = :id_nivel_clasificador";
+            _context6.next = 6;
+            return _database.sequelize.query(query, {
+              model: _nivel_clasificador["default"],
+              replacements: {
+                nomb_nivel_clasificador: nomb_nivel_clasif,
+                id_nivel_clasificador: id_nivel_clasificador
+              },
+              type: _database.sequelize.QueryTypes.UPDATE
+            }).then(
+            /*#__PURE__*/
+            function () {
+              var _ref2 = _asyncToGenerator(
+              /*#__PURE__*/
+              regeneratorRuntime.mark(function _callee5(results, metadata) {
+                var filaCambiada;
+                return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                  while (1) {
+                    switch (_context5.prev = _context5.next) {
+                      case 0:
+                        _context5.next = 2;
+                        return _nivel_clasificador["default"].findByPk(id_nivel_clasificador);
+
+                      case 2:
+                        filaCambiada = _context5.sent;
+
+                        if (results[1] > 0) {
+                          res.status(200).json({
+                            data: filaCambiada
+                          });
+                        } else {
+                          res.status(400).json({
+                            message: "Error, no existe nivel con ese id"
+                          });
+                        }
+
+                      case 4:
+                      case "end":
+                        return _context5.stop();
+                    }
+                  }
+                }, _callee5);
+              }));
+
+              return function (_x10, _x11) {
+                return _ref2.apply(this, arguments);
+              };
+            }());
+
+          case 6:
+            _context6.next = 12;
+            break;
+
+          case 8:
+            _context6.prev = 8;
+            _context6.t0 = _context6["catch"](2);
+            console.log(_context6.t0);
+            res.status(500).json({
+              message: "no se pudo actualizar el nivel del clasificador (2)",
+              data: {}
+            });
+
+          case 12:
+          case "end":
+            return _context6.stop();
+        }
+      }
+    }, _callee6, null, [[2, 8]]);
+  }));
+  return _editar2NivelClasificador.apply(this, arguments);
 }

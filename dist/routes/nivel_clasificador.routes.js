@@ -12,6 +12,6 @@ var _nivel_clasificador = require("../controllers/nivel_clasificador.controller"
 var router = (0, _express.Router)();
 router.get('/', _nivel_clasificador.listarNivelClasificador);
 router.post('/', _nivel_clasificador.crearNivelClasificador);
-router.put('/:id_nivel_clasificador', _nivel_clasificador.editarNivelClasificador);
+router.put('/:id_nivel_clasificador', _nivel_clasificador.editar2NivelClasificador);
 var _default = router;
 exports["default"] = _default;

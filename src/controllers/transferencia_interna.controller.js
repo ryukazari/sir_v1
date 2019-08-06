@@ -1,4 +1,5 @@
 import transferencia_interna from '../models/transferencia_interna';
+import { sequelize } from '../database/database';
 
 export async function listarTransferenciaInterna(req, res) {
     try {
@@ -56,31 +57,41 @@ export async function crearTransferenciaInterna(req, res) {
         monto_transferencia_interna
     } = req.body;
     try {
-        let newTransferenciaInterna = await transferencia_interna.create({
-            anio_transferencia_interna,
-            id_sede_origen,
-            id_sede_destino,
-            mes_transferencia_interna,
-            fecha_transferencia_interna,
-            expediente_transferencia_interna,
-            desc_transferencia_interna,
-            monto_transferencia_interna
-        });
-        console.log(newTransferenciaInterna.dataValues.id_transferencia_interna);
-        if (newTransferenciaInterna.dataValues.id_transferencia_interna === null) {
-            return res.json({
-                message: "Error al registrar la transferencia, no hay presupuesto suficiente",
-                data: {}
+        let resultadoQ;
+        let query = "SELECT verificar_presupuesto_transferencia_interna(:id_sede_origen, :id_sede_destino, :monto_transferencia_interna)";
+
+        await sequelize.query(query, {
+                replacements: {
+                    id_sede_origen: id_sede_origen,
+                    id_sede_destino: id_sede_destino,
+                    monto_transferencia_interna: monto_transferencia_interna
+                }
+            })
+            .then(async function(result, metadata) {
+                if (result[0][0].verificar_presupuesto_transferencia_interna === 0) {
+                    return res.json({
+                        message: "Error al registrar la transferencia, no hay presupuesto suficiente",
+                        data: {}
+                    });
+                } else {
+                    let newTransferenciaInterna = await transferencia_interna.create({
+                        anio_transferencia_interna,
+                        id_sede_origen,
+                        id_sede_destino,
+                        mes_transferencia_interna,
+                        fecha_transferencia_interna,
+                        expediente_transferencia_interna,
+                        desc_transferencia_interna,
+                        monto_transferencia_interna
+                    });
+                    console.log("THIS");
+                    console.log(newTransferenciaInterna.dataValues.id_transferencia_interna);
+                    return res.status(200).json({
+                        message: "se creó la transferencia interna",
+                        data: newTransferenciaInterna
+                    });
+                }
             });
-        } else {
-            return res.status(200).json({
-                message: "se creó la transferencia interna",
-                data: newTransferenciaInterna
-            });
-
-        }
-
-
     } catch (error) {
         console.log(error);
         res.status(500).json({

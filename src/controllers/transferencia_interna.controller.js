@@ -5,7 +5,7 @@ export async function listarTransferenciaInterna(req, res) {
     try {
         const transferencias = await transferencia_interna.findAll();
         if (transferencias.length <= 0) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No existen transferencias Internas",
                 data: {}
             })
@@ -184,7 +184,7 @@ export async function listarTransferenciaSalienteById(req, res) {
             }
         });
         if (transferencias.length <= 0) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No existen transferencias salientes para la sede con id: " + id,
                 data: {}
             })
@@ -216,7 +216,7 @@ export async function listarTransferenciaEntranteById(req, res) {
             }
         });
         if (transferencias.length <= 0) {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No existen transferencias entrantes para la sede con id: " + id,
                 data: {}
             })

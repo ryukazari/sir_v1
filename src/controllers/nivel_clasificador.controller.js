@@ -61,7 +61,7 @@ export async function editarNivelClasificador(req, res) {
                 data: nivel
             });
         } else {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No se encontró un nivel clasificador con id: " + id_nivel_clasificador,
                 data: nivel
             });
@@ -95,7 +95,7 @@ export async function editar2NivelClasificador(req, res) {
                         data: filaCambiada
                     });
                 } else {
-                    res.status(400).json({
+                    res.status(404).json({
                         message: "Error, no existe nivel con ese id"
                     });
                 }

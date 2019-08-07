@@ -109,7 +109,7 @@ export async function listarClasificadorByNivel(req, res) {
                 data: clasif
             })
         } else {
-            return res.status(400).json({
+            return res.status(404).json({
                 message: "No existe registro con el id_nivel: " + id_nivel
             })
 

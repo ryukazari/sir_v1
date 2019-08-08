@@ -26,6 +26,7 @@ import usuario from './routes/usuario.routes';
 import pago from './routes/pago.routes';
 import detalle_pago from './routes/detalle_pago.routes';
 import index from './routes/index.routes';
+import reportes from './routes/reportes.routes';
 
 const port = process.env.PORT || 3000;
 
@@ -60,6 +61,7 @@ app.use('/api/usuario', usuario);
 app.use('/api/pago', pago);
 app.use('/api/detalle-pago', detalle_pago);
 app.use('/', index);
+app.use('/api/reportes', reportes);
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');

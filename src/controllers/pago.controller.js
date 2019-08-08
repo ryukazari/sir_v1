@@ -143,12 +143,10 @@ export async function listarPagoRealizado(req, res) {
     WHERE p.estado = 1
     `;
     try {
-        console.log("2");
         sequelize.query(query, {
                 type: sequelize.QueryTypes.SELECT
             })
             .then(results => {
-                console.log("3");
                 if (!results.length > 0) {
                     console.log("0");
                     return res.status(404).json({

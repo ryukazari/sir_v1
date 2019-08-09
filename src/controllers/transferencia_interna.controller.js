@@ -84,12 +84,12 @@ export async function crearTransferenciaInterna(req, res) {
                         desc_transferencia_interna,
                         monto_transferencia_interna
                     });
-                    console.log("THIS");
-                    console.log(newTransferenciaInterna.dataValues.id_transferencia_interna);
-                    return res.status(200).json({
-                        message: "se creó la transferencia interna",
-                        data: newTransferenciaInterna
-                    });
+                    if (newTransferenciaInterna) {
+                        return res.status(200).json({
+                            message: "se creó la transferencia interna",
+                            data: newTransferenciaInterna
+                        });
+                    }
                 }
             });
     } catch (error) {

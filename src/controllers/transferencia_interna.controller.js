@@ -207,7 +207,6 @@ export async function listarTransferenciaSalienteById(req, res) {
 
 export async function listarTransferenciaEntranteById(req, res) {
     const { id } = req.params;
-    console.log(id);
 
     try {
         let transferencias = await transferencia_interna.findAll({

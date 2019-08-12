@@ -70,3 +70,32 @@ export async function crearTransferenciaExterna(req, res) {
         })
     }
 }
+
+export async function listarTransferenciaEntranteById(req, res) {
+    const { id } = req.params;
+
+    try {
+        let transferencias = await transferencia_externa.findAll({
+            where: {
+                id_transferencia_externa: id
+            }
+        });
+        if (transferencias.length <= 0) {
+            return res.status(404).json({
+                message: "No existen transferencias entrantes para la sede con id: " + id,
+                data: {}
+            })
+        } else {
+            return res.status(200).json({
+                data: transferencias
+            })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "error al obtener los registros de las trasnferencias entrantes",
+            data: {}
+        })
+    }
+
+}
